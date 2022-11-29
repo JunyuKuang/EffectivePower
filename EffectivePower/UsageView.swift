@@ -13,6 +13,15 @@ struct UsageView: View {
 	var selectedRange: ClosedRange<TimeInterval>?
 	@Binding
 	var selectedNodes: Set<Node.ID>
+    
+    @State
+    var showsAlert = false
+    
+    @State
+    var copiedContent = ""
+    
+    var specificApp: String
+    var specificRootNode: String
 
 	static let dateFormatter: DateFormatter = {
 		let dateFormatter = DateFormatter()
@@ -35,7 +44,11 @@ struct UsageView: View {
 		let matchingEvents = events.filter { event in
 			let start = max(event.timestamp.lowerBound.timeIntervalSince1970, selectedRange.lowerBound)
 			let end = min(event.timestamp.upperBound.timeIntervalSince1970, selectedRange.upperBound)
-			return start < end
+            let conditionTime = start < end
+            let conditionApp = specificApp == "" ? true : event.node?.name == specificApp
+            let conditionRootNode = specificRootNode == "" ? true : event.rootNode?.name == specificRootNode
+        
+            return conditionTime && conditionApp && conditionRootNode
 		}
 
 		let nodes = Dictionary(
@@ -49,7 +62,7 @@ struct UsageView: View {
 		}
 
 		let totalEnergy = nodes.values.reduce(0, +)
-
+        let pasteBoard = NSPasteboard.general
 		let sortedNodes = nodes.sorted {
 			$0.value > $1.value
 		}.map(\.key)
@@ -65,8 +78,24 @@ struct UsageView: View {
 							VStack(alignment: .leading) {
 								Text("\(node.node?.name ?? "<Unknown>")")
 									.font(Font.title3)
+                                    .onTapGesture {
+                                        pasteBoard.clearContents()
+                                        pasteBoard.setString(node.node?.name ?? "", forType: .string)
+                                        copiedContent = node.node?.name ?? ""
+                                        self.showsAlert = true
+                                    }.alert(isPresented: self.$showsAlert) {
+                                        Alert(title: Text("\(copiedContent) copied"))
+                                    }
 								Text("\(node.rootNode?.name ?? "<Unknown>")")
 									.foregroundColor(.secondary)
+                                    .onTapGesture {
+                                        pasteBoard.clearContents()
+                                        pasteBoard.setString(node.rootNode?.name ?? "", forType: .string)
+                                        copiedContent = node.rootNode?.name ?? ""
+                                        self.showsAlert = true
+                                    }.alert(isPresented: self.$showsAlert) {
+                                        Alert(title: Text("\(copiedContent) copied"))
+                                    }
 							}
 							Spacer()
 							Text(String(format: "%.02f%%", nodes[node]! / totalEnergy * 100))

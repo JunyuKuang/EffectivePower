@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		49344BD6283D4EC400D6058E /* Polyfills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49344BD5283D4EC400D6058E /* Polyfills.swift */; };
-		4962DAE1283C77B9008240D4 /* SQLiteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4962DAE0283C77B9008240D4 /* SQLiteDatabase.swift */; };
 		4962DAE3283C7864008240D4 /* BinaryGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4962DAE2283C7864008240D4 /* BinaryGraph.swift */; };
 		4962DAE5283C78AA008240D4 /* HistogramGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4962DAE4283C78AA008240D4 /* HistogramGraph.swift */; };
 		4962DAE7283C78D4008240D4 /* LinearGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4962DAE6283C78D4008240D4 /* LinearGraph.swift */; };
@@ -20,6 +19,7 @@
 		4968D4792827F708005A219D /* EffectivePowerDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968D4782827F708005A219D /* EffectivePowerDocument.swift */; };
 		4968D47B2827F708005A219D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968D47A2827F708005A219D /* ContentView.swift */; };
 		4968D47D2827F709005A219D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4968D47C2827F709005A219D /* Assets.xcassets */; };
+		FBD5F6FA293598D800C33B90 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = FBD5F6F9293598D800C33B90 /* SQLite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,6 @@
 		4962DADD283C75B7008240D4 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		4962DADE283C75C9008240D4 /* EffectivePower.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = EffectivePower.xcconfig; sourceTree = "<group>"; };
 		4962DADF283C7725008240D4 /* Deployment.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Deployment.xcconfig; sourceTree = "<group>"; };
-		4962DAE0283C77B9008240D4 /* SQLiteDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteDatabase.swift; sourceTree = "<group>"; };
 		4962DAE2283C7864008240D4 /* BinaryGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryGraph.swift; sourceTree = "<group>"; };
 		4962DAE4283C78AA008240D4 /* HistogramGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistogramGraph.swift; sourceTree = "<group>"; };
 		4962DAE6283C78D4008240D4 /* LinearGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearGraph.swift; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBD5F6FA293598D800C33B90 /* SQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +88,6 @@
 				4962DAE6283C78D4008240D4 /* LinearGraph.swift */,
 				4962DAEC283C79A3008240D4 /* MouseTrackingView.swift */,
 				49344BD5283D4EC400D6058E /* Polyfills.swift */,
-				4962DAE0283C77B9008240D4 /* SQLiteDatabase.swift */,
 				4962DAE8283C7965008240D4 /* UsageView.swift */,
 				4968D47C2827F709005A219D /* Assets.xcassets */,
 				4962DADC283C75AE008240D4 /* Debug.xcconfig */,
@@ -116,6 +115,9 @@
 			dependencies = (
 			);
 			name = EffectivePower;
+			packageProductDependencies = (
+				FBD5F6F9293598D800C33B90 /* SQLite */,
+			);
 			productName = EffectivePower;
 			productReference = 4968D4732827F708005A219D /* EffectivePower.app */;
 			productType = "com.apple.product-type.application";
@@ -144,6 +146,9 @@
 				Base,
 			);
 			mainGroup = 4968D46A2827F708005A219D;
+			packageReferences = (
+				FBD5F6F8293598D800C33B90 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+			);
 			productRefGroup = 4968D4742827F708005A219D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -179,7 +184,6 @@
 				4962DAE3283C7864008240D4 /* BinaryGraph.swift in Sources */,
 				4962DAEB283C7973008240D4 /* ChartView.swift in Sources */,
 				4968D4772827F708005A219D /* EffectivePowerApp.swift in Sources */,
-				4962DAE1283C77B9008240D4 /* SQLiteDatabase.swift in Sources */,
 				4968D47B2827F708005A219D /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,6 +209,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4962DADE283C75C9008240D4 /* EffectivePower.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = FF973S8UP2;
 			};
 			name = Debug;
 		};
@@ -212,6 +217,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4962DADE283C75C9008240D4 /* EffectivePower.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = FF973S8UP2;
 			};
 			name = Release;
 		};
@@ -237,6 +243,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FBD5F6F8293598D800C33B90 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FBD5F6F9293598D800C33B90 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FBD5F6F8293598D800C33B90 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4968D46B2827F708005A219D /* Project object */;
 }
